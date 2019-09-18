@@ -1,10 +1,22 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import PropTypes from 'proptypes'
+import { Container, Content, View } from 'native-base'
 
-export default function WatchList () {
+import { WatchListContent } from '../components/WatchListContent'
+
+export default function WatchList ({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>WatchList Screen</Text>
-    </View>
+    <Container>
+      <Content>
+        <View style={{ marginLeft: 10, marginRight: 10 }}>
+          <WatchListContent navigation={navigation} />
+        </View>
+      </Content>
+
+    </Container>
   )
+}
+
+WatchList.propTypes = {
+  navigation: PropTypes.object,
 }

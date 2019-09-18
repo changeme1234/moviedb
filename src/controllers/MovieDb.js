@@ -45,6 +45,15 @@ export default class MovieDB {
       throw (getErrorMessage(err.response.data))
     }
   }
+
+  static async getWatchlist (sessionId, language = 'en-US') {
+    try {
+      const { data: { results } } = await client.get(`/account/{account_id}/watchlist/movies?api_key=${MOVIEDB_API_KEY}&language=${language}&session_id=${sessionId}&sort_by=created_at.asc&page=1`)
+      return results
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
 }
 
 const getErrorMessage = (obj) => {
