@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ActivityIndicator, AsyncStorage, StatusBar, View } from 'react-native'
+import { ActivityIndicator, StatusBar, View } from 'react-native'
+
+import { getSession } from '../storage'
 
 export default class AuthLoading extends React.Component {
   constructor (props) {
@@ -9,9 +11,9 @@ export default class AuthLoading extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken')
+    const sessionId = await getSession()
 
-    this.props.navigation.navigate(userToken ? 'Main' : 'Auth')
+    this.props.navigation.navigate(sessionId ? 'Main' : 'Auth')
   };
 
   render () {

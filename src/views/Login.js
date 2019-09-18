@@ -1,10 +1,23 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import PropTypes from 'proptypes'
+import { Container, Content } from 'native-base'
 
-export default function Login () {
+import LoginForm from '../components/LoginForm'
+
+export default function Login ({ navigation }) {
+  const onLogin = () => {
+    navigation.navigate('Main')
+  }
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Login page</Text>
-    </View>
+    <Container>
+      <Content>
+        <LoginForm onLogin={onLogin} />
+      </Content>
+    </Container>
   )
+}
+
+Login.propTypes = {
+  navigation: PropTypes.object,
 }
