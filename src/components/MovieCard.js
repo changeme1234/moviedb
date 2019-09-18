@@ -5,12 +5,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function MovieCard () {
   return (
-    <Card style={{ padding: 2.5 }} >
+    <Card style={{ padding: 5 }} >
       <TouchableOpacity>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ overflow: 'hidden' }}>
             <Image
-              style={{ width: 110, height: 180, resizeMode: 'contain', borderRadius: 15 }}
+              style={{ width: 100, height: 140, resizeMode: 'contain', borderRadius: 15 }}
               source={{ uri: 'https://image.tmdb.org/t/p/w1280/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg' }}
             />
           </View>

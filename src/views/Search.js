@@ -1,10 +1,15 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+import ShowCase from '../components/ShowCase'
+import { Content, Container } from 'native-base'
 
 export default function Search () {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Search screen</Text>
-    </View>
+    <Container style={{ }}>
+      <Content >
+        <Text>Search Screen</Text>
+        <ShowCase />
+      </Content>
+    </Container>
   )
 }
