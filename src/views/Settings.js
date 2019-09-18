@@ -20,5 +20,5 @@ export default function Settings ({ navigation }) {
 }
 
 Settings.propTypes = {
-  navigation: PropTypes.navigation,
+  navigation: PropTypes.object,
 }
