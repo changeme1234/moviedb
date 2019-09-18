@@ -1,15 +1,40 @@
+import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+
 import AuthLoading from './views/AuthLoading'
+import BottomTabBar from './components/BottomTabBar'
 import Home from './views/Home'
 import Login from './views/Login'
+import Search from './views/Search'
+import Settings from './views/Settings'
+import WatchList from './views/WatchList'
+
+const BottomTabs = createBottomTabNavigator(
+  {
+    Home,
+    Search,
+    Settings,
+    WatchList,
+  },
+  {
+    tabBarComponent: props => <BottomTabBar {...props} />,
+    tabBarOptions: {
+      activeTintColor: 'red',
+      style: {
+        justifyContent: 'center',
+      },
+    },
+  }
+)
 
 const MainStack = createStackNavigator(
   {
-    Home,
+    BottomTabs,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'BottomTabs',
     headerMode: 'none',
   }
 )
