@@ -7,6 +7,7 @@ import AuthLoading from './views/AuthLoading'
 import BottomTabBar from './components/BottomTabBar'
 import Home from './views/Home'
 import Login from './views/Login'
+import MovieDetail from './views/MovieDetail'
 import Search from './views/Search'
 import Settings from './views/Settings'
 import WatchList from './views/WatchList'
@@ -32,6 +33,7 @@ const BottomTabs = createBottomTabNavigator(
 const MainStack = createStackNavigator(
   {
     BottomTabs,
+    MovieDetail,
   },
   {
     initialRouteName: 'BottomTabs',

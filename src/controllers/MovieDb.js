@@ -54,6 +54,15 @@ export default class MovieDB {
       throw (getErrorMessage(err.response.data))
     }
   }
+
+  static async getMovieDetail (id, language = 'en-US') {
+    try {
+      const { data } = await client.get(`/movie/${id}?api_key=${MOVIEDB_API_KEY}&language=${language}`)
+      return data
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
 }
 
 const getErrorMessage = (obj) => {
