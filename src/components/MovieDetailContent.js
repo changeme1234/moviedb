@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'proptypes'
 import { ActivityIndicator, ImageBackground } from 'react-native'
 import { Icon, Text, View } from 'native-base'
+import { Rating } from 'react-native-ratings'
 
 import MovieDB from '../controllers/MovieDb'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -77,7 +78,19 @@ export default class MovieDetailContent extends Component {
             <Text style={{ fontWeight: 'bold' }}>Synopsis</Text>
             <Text style={{ color: 'gray', marginTop: 10 }}>{movie.overview}</Text>
           </View>
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontWeight: 'bold' }}>Rate it!</Text>
+            <Rating
+              ratingCount={10}
+              startingValue={1.57}
+              imageSize={30}
+              onFinishRating={this.ratingCompleted}
+              showRating
+              style={{ paddingVertical: 10 }}
+            />
+          </View>
         </View>
+
       </View>
     )
   }
