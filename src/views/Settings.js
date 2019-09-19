@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'proptypes'
 import { View } from 'react-native'
-import { Button, Text } from 'native-base'
+import { Button, Header, Text, Container } from 'native-base'
 
 import { removeSession } from '../storage'
 
@@ -12,10 +12,14 @@ export default function Settings ({ navigation }) {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings Screen</Text>
-      <Button onPress={() => logout()}><Text>Logout</Text></Button>
-    </View>
+    <Container>
+      <Header />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings Screen</Text>
+        <Button onPress={() => logout()}><Text>Logout</Text></Button>
+      </View>
+    </Container>
+
   )
 }
 

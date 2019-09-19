@@ -1,12 +1,11 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { Container, Content } from 'native-base'
-
-import MovieList from '../components/MovieList'
+import { Container, Content, Header } from 'native-base'
 
 export default function Home () {
   return (
     <Container>
+      <Header />
       <Content>
         <View style={{}}>
           <Text>Home Screen</Text>
