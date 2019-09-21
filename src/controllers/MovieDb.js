@@ -72,6 +72,15 @@ export default class MovieDB {
       throw (getErrorMessage(err.response.data))
     }
   }
+
+  static async getMovies (type, page = 1) {
+    try {
+      const { data: { results } } = await client.get(`/movie/${type}?api_key=${MOVIEDB_API_KEY}&page=${page}`)
+      return results
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
 }
 
 const getErrorMessage = (obj) => {
