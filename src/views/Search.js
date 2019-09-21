@@ -1,16 +1,20 @@
 import React from 'react'
-import { Text } from 'react-native'
-import ShowCase from '../components/ShowCase'
+import PropTypes from 'proptypes'
 import { Content, Container, Header } from 'native-base'
 
-export default function Search () {
+import SearchList from '../components/SearchList'
+
+export default function Search ({ navigation }) {
   return (
-    <Container style={{ }}>
+    <Container >
       <Header />
-      <Content >
-        <Text>Search Screen</Text>
-        <ShowCase />
+      <Content contentContainerStyle={{ margin: 5 }}>
+        <SearchList navigation={navigation} />
       </Content>
     </Container>
   )
+}
+
+Search.propTypes = {
+  navigation: PropTypes.object,
 }

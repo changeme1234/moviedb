@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'proptypes'
 import { Image } from 'react-native'
 import { View } from 'native-base'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-export default function ShowCase () {
+export default function ShowCase ({ style }) {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={style}>
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity>
           <Image
@@ -89,4 +90,8 @@ export default function ShowCase () {
 
     </View>
   )
+}
+
+ShowCase.propTypes = {
+  style: PropTypes.object,
 }
