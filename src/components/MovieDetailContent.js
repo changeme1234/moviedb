@@ -7,6 +7,16 @@ import MovieDB from '../controllers/MovieDb'
 import MovieDetailHeader from './MovieDetailHeader'
 import MovieDetailRating from './MovieDetailRating'
 
+const styles = {
+  title: { fontWeight: 'bold' },
+  column: { width: '33%' },
+  desc: { color: 'gray', marginTop: 10 },
+  columnsView: {
+    flexDirection: 'row',
+    marginTop: 35,
+    justifyContent: 'space-around' },
+}
+
 const getGenres = (arr) => {
   return arr.reduce((acc, elem) => {
     if (acc === '') return elem.name
@@ -36,23 +46,23 @@ export default class MovieDetailContent extends Component {
       <View>
         <MovieDetailHeader movie={movie} />
         <View style={{ marginLeft: 20, marginRight: 10 }}>
-          <View style={{ flexDirection: 'row', marginTop: 35, justifyContent: 'space-around' }}>
-            <View style={{ width: '33%' }} >
-              <Text style={{ fontWeight: 'bold' }}>Duration</Text>
-              <Text style={{ color: 'gray', marginTop: 10 }}>{movie.runtime}m</Text>
+          <View style={styles.columnsView}>
+            <View style={styles.column} >
+              <Text style={styles.title}>Duration</Text>
+              <Text style={styles.desc}>{movie.runtime}m</Text>
             </View>
-            <View style={{ width: '33%' }}>
-              <Text style={{ fontWeight: 'bold' }}>Genre</Text>
-              <Text style={{ color: 'gray', marginTop: 10 }}>{getGenres(movie.genres)}</Text>
+            <View style={styles.colum}>
+              <Text style={styles.title}>Genre</Text>
+              <Text style={styles.desc}>{getGenres(movie.genres)}</Text>
             </View>
-            <View style={{ width: '33%' }}>
-              <Text style={{ fontWeight: 'bold' }}>Language</Text>
-              <Text style={{ color: 'gray', marginTop: 10 }}>{movie.original_language}</Text>
+            <View style={styles.colum}>
+              <Text style={styles.title}>Language</Text>
+              <Text style={styles.desc}>{movie.original_language}</Text>
             </View>
           </View>
           <View style={{ marginTop: 20 }}>
-            <Text style={{ fontWeight: 'bold' }}>Synopsis</Text>
-            <Text style={{ color: 'gray', marginTop: 10 }}>{movie.overview}</Text>
+            <Text style={styles.title}>Synopsis</Text>
+            <Text style={styles.desc}>{movie.overview}</Text>
           </View>
           <MovieDetailRating movie={movie} />
         </View>

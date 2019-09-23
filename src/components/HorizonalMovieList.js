@@ -28,7 +28,14 @@ export default class HorizontalMovieList extends Component {
         <View>
           <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
           <ScrollView horizontal style={{ marginTop: 10 }}>
-            {movies.map(movie => <HorizontalMovieCard movie={movie} key={movie.id} navigation={navigation} />)}
+            {movies.map(
+              movie =>
+                <HorizontalMovieCard
+                  movie={movie}
+                  key={movie.id}
+                  navigation={navigation}
+                />
+            )}
           </ScrollView>
         </View>
       </View>

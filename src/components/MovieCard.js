@@ -6,18 +6,22 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { getGenresFromId } from '../utils'
 
+const styles = {
+  image: { width: 100, height: 140, resizeMode: 'contain', borderRadius: 15 },
+  dotImage: { width: 30, height: 25, color: 'gray' },
+  desc: { color: 'gray', fontSize: 14 },
+  cardFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center' },
+  voteAverage: { color: 'gray', fontWeight: 'bold', fontSize: 14 },
+}
 export default function MovieCard ({
-  title,
-  poster_path: posterPath,
-  release_date: releaseDate,
-  original_language: originalLanguage,
-  vote_average: voteAverage,
-  genre_ids: genreIds,
-  id,
+  movie,
   navigation,
 }) {
   const onPress = () => {
-    navigation.navigate('MovieDetail', { id })
+    navigation.navigate('MovieDetail', { id: movie.id })
   }
 
   return (
@@ -26,28 +30,39 @@ export default function MovieCard ({
         <View style={{ flexDirection: 'row' }}>
           <View style={{ overflow: 'hidden' }}>
             <Image
-              style={{ width: 100, height: 140, resizeMode: 'contain', borderRadius: 15 }}
-              source={{ uri: `https://image.tmdb.org/t/p/w200${posterPath}` }}
+              style={styles.image}
+              source={{ uri: `https://image.tmdb.org/t/p/w200${movie.poster_path}` }}
             />
           </View>
           <View style={{ marginLeft: 10, justifyContent: 'space-between', flex: 1 }}>
             <View >
-              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{title}</Text>
+              <Text
+                style={{ fontWeight: 'bold', fontSize: 18 }}
+              >
+                {movie.title}
+              </Text>
               <View style={{ flexDirection: 'row' }}>
-                <Text style={{ color: 'gray', fontSize: 14 }}>{releaseDate.substring(0, 4)} </Text>
+                <Text
+                  style={styles.desc}>
+                  {movie.release_date.substring(0, 4)}
+                </Text>
                 <View style={{ borderLeftWidth: 1, borderColor: 'gray' }} />
-                <Text style={{ color: 'gray', fontSize: 14 }}> {originalLanguage}</Text>
+                <Text style={styles.desc}> {movie.original_language}</Text>
               </View>
               <View>
-                <Text style={{ color: 'gray', fontSize: 14 }}>{getGenresFromId(genreIds)}</Text>
+                <Text style={styles.desc}>
+                  {getGenresFromId(movie.genre_ids)}
+                </Text>
               </View>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={styles.cardFooter}>
               <View>
-                <Text style={{ color: 'gray', fontWeight: 'bold', fontSize: 14 }}>{voteAverage}</Text>
+                <Text style={styles.voteAverage}>{movie.vote_average}</Text>
               </View>
               <View style={{ padding: 5 }}>
-                <Icon style={{ width: 30, height: 25, color: 'gray' }} name='dots-vertical' type='MaterialCommunityIcons' />
+                <Icon style={styles.dotImage}
+                  name='dots-vertical'
+                  type='MaterialCommunityIcons' />
               </View>
             </View>
           </View>
@@ -58,12 +73,6 @@ export default function MovieCard ({
 }
 
 MovieCard.propTypes = {
-  genre_ids: PropTypes.array,
-  id: PropTypes.number,
+  movie: PropTypes.object,
   navigation: PropTypes.object,
-  original_language: PropTypes.string,
-  poster_path: PropTypes.string,
-  release_date: PropTypes.string,
-  title: PropTypes.string,
-  vote_average: PropTypes.number,
 }

@@ -7,7 +7,7 @@ import SearchList from '../components/SearchList'
 export default function Search ({ navigation }) {
   return (
     <Container >
-      <Header />
+      <Header style={{ backgroundColor: '#FFF' }} />
       <Content contentContainerStyle={{ margin: 5 }}>
         <SearchList navigation={navigation} />
       </Content>

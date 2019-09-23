@@ -15,7 +15,7 @@ export default function Settings ({ navigation }) {
     <Container>
       <Header />
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings Screen</Text>
+        <Text>User Profile Screen</Text>
         <Button onPress={() => logout()}><Text>Logout</Text></Button>
       </View>
     </Container>

@@ -7,7 +7,7 @@ import MovieCard from './MovieCard'
 export default function MovieList ({ style, movies, navigation }) {
   return (
     <View style={style}>
-      {movies.map(p => <MovieCard {...p} key={p.id} navigation={navigation} />)}
+      {movies.map(p => <MovieCard movie={p} key={p.id} navigation={navigation} />)}
     </View>
   )
 }

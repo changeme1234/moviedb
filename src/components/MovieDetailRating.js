@@ -43,9 +43,7 @@ export default class MovieDetailRating extends Component {
     const { movie } = this.props
 
     this.setState({ showRating: false })
-
     const sessionId = await getSession()
-    console.log(sessionId)
     await MovieDB.deleteRating(sessionId, movie.id)
 
     Toast.show({
@@ -92,7 +90,10 @@ export default class MovieDetailRating extends Component {
 
           </View>
           : <View style={{ alignSelf: 'center' }}>
-            <Button onPress={this.addRating} style={{ width: '40%', backgroundColor: 'gold' }}>
+            <Button
+              onPress={this.addRating}
+              style={{ width: '40%', backgroundColor: 'gold' }}
+            >
               <Text>Rate it</Text>
               <Icon name='star' />
             </Button>

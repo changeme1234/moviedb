@@ -4,7 +4,7 @@ import { Body, Button, Header as NBHeader, Icon, Left, Right, Title } from 'nati
 
 export default function Header ({ navigation, title }) {
   return (
-    <NBHeader transparent>
+    <NBHeader transparent style={{ backgroundColor: '#FFF' }}>
       <Left>
         <Button transparent onPress={() => navigation.goBack()}>
           <Icon style={{ color: 'black' }} name='arrowleft' type='AntDesign' />

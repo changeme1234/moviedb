@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'proptypes'
-import { Container, Content } from 'native-base'
+import { Container, View } from 'native-base'
 
 import LoginForm from '../components/LoginForm'
 
@@ -11,9 +11,9 @@ export default function Login ({ navigation }) {
 
   return (
     <Container>
-      <Content>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <LoginForm onLogin={onLogin} />
-      </Content>
+      </View>
     </Container>
   )
 }

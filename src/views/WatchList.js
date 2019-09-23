@@ -7,7 +7,7 @@ import { WatchListContent } from '../components/WatchListContent'
 export default function WatchList ({ navigation }) {
   return (
     <Container>
-      <Header />
+      <Header style={{ backgroundColor: '#FFF' }} />
       <Content>
         <View style={{ marginLeft: 10, marginRight: 10 }}>
           <WatchListContent navigation={navigation} />

@@ -20,13 +20,7 @@ const BottomTabs = createBottomTabNavigator(
     WatchList,
   },
   {
-    tabBarComponent: props => <BottomTabBar {...props} />,
-    tabBarOptions: {
-      activeTintColor: 'red',
-      style: {
-        justifyContent: 'center',
-      },
-    },
+    tabBarComponent: props => <BottomTabBar {...props} style={{ color: '#605F60' }} />,
   }
 )
 

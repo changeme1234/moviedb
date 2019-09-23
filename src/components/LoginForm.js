@@ -10,7 +10,6 @@ import { saveSession } from '../storage'
 const styles = {
   button: {
     justifyContent: 'center',
-    flex: 1,
     width: '100%',
     borderRadius: 5,
     marginTop: 40,
@@ -51,7 +50,7 @@ export default class LoginForm extends Component {
     const { values } = this.state
 
     return (
-      <View>
+      <View style={{ width: '70%' }}>
         <InputGroup
           label='Username'
           onChangeText={value => this.setFieldValue('username', value)}
@@ -61,9 +60,10 @@ export default class LoginForm extends Component {
           label='Password'
           onChangeText={value => this.setFieldValue('password', value)}
           value={values.password}
+          style={{ marginTop: 20 }}
         />
         <Button style={styles.button} onPress={this.onSubmit}>
-          <Text >Login</Text>
+          <Text>Login</Text>
         </Button>
       </View>
 

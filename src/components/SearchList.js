@@ -33,7 +33,7 @@ export default class SearchList extends Component {
           onChangeText={value => this.search('query', value)}
         />
         { movies.length !== 0
-          ? movies.map(p => <MovieCard {...p} navigation={navigation} key={p.id} />)
+          ? movies.map(p => <MovieCard movie={p} navigation={navigation} key={p.id} />)
           : <ShowCase style={{ marginTop: 10 }} />
         }
       </View>

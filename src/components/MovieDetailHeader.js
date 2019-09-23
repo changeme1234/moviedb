@@ -16,6 +16,31 @@ const isWatchlisted = async (movie) => {
   return !!obj
 }
 
+const styles = {
+  backdrop: { width: '100%',
+    height:
+  '100%',
+    backgroundColor: 'rgba(52, 52, 52, 0.5)' },
+  topLeft: {
+    marginTop: 10,
+    marginRight: 10,
+    flexDirection: 'row',
+    alignSelf: 'flex-end' },
+  title: { color: '#FFF', fontWeight: 'bold', fontSize: 20 },
+  playView: {
+    position: 'relative',
+    top: -40,
+    bottom: 0,
+    right: 0,
+    left: -20,
+    alignSelf: 'flex-end' },
+  titleView: {
+    width: '80%',
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginLeft: 10 },
+}
+
 export default class MovieDetailHeader extends Component {
   constructor (props) {
     super(props)
@@ -68,24 +93,38 @@ export default class MovieDetailHeader extends Component {
             style={{ height: 200, color: 'black' }}
             source={{ uri: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}` }}
           >
-            <View style={{ width: '100%', height: '100%', backgroundColor: 'rgba(52, 52, 52, 0.5)' }}>
-              <View style={{ marginTop: 10, marginRight: 10, flexDirection: 'row', alignSelf: 'flex-end' }}>
+            <View style={styles.backdrop}>
+              <View style={styles.topLeft}>
                 <TouchableOpacity onPress={() => this.onToggle('favorites')}>
-                  <Icon style={{ fontSize: 35, color: favoriteColor }} name='heart' />
+                  <Icon
+                    style={{ fontSize: 35, color: favoriteColor }}
+                    name='heart'
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.onToggle('watchlist')}>
-                  <Icon style={{ fontSize: 35, color: watchlistColor, marginLeft: 10 }} name='bookmark' type='Feather' />
+                  <Icon
+                    style={{ fontSize: 35, color: watchlistColor, marginLeft: 10 }}
+                    name='bookmark'
+                    type='Feather'
+                  />
                 </TouchableOpacity>
               </View>
-              <View style={{ width: '80%', flex: 1, justifyContent: 'flex-end', marginLeft: 10 }}>
-                <Text style={{ color: '#FFF', fontWeight: 'bold', fontSize: 20 }}>{movie.title}</Text>
-                <Text style={{ color: '#FFF', fontWeight: 'bold', fontSize: 20, marginTop: 10 }}>{movie.vote_average}</Text>
+              <View style={styles.titleView}>
+                <Text style={styles.title}>{movie.title}</Text>
+                <Text
+                  style={{ ...styles.title, marginTop: 10 }
+                  }>
+                  {movie.vote_average}
+                </Text>
               </View>
             </View>
           </ImageBackground>
-          <View style={{ position: 'relative', top: -40, bottom: 0, right: 0, left: -20, alignSelf: 'flex-end' }}>
+          <View style={styles.playView}>
             <TouchableOpacity>
-              <Icon style={{ fontSize: 80, color: 'red' }} name='ios-play-circle' />
+              <Icon
+                style={{ fontSize: 80, color: 'red' }}
+                name='ios-play-circle'
+              />
             </TouchableOpacity>
           </View>
         </View>

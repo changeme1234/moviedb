@@ -20,15 +20,15 @@ const tabs = [
   },
   {
     route: 'Settings',
-    name: 'settings',
-    type: 'Ionicons',
+    name: 'user',
+    type: 'FontAwesome',
   },
 ]
 
 function ButtonTab ({ navigate, route, name, type }) {
   return (
-    <Button onPress={() => navigate(route)}>
-      <Icon name={name} type={type} />
+    <Button onPress={() => navigate(route)} >
+      <Icon name={name} type={type} style={{ color: 'black' }} />
     </Button>
   )
 }
@@ -44,7 +44,7 @@ export default function BottomTabBar ({ navigation }) {
   const { navigate } = navigation
 
   return (
-    <Footer >
+    <Footer style={{ backgroundColor: '#FFF' }}>
       <FooterTab style={{ backgroundColor: '#FFF' }}>
         {tabs.map(p => <ButtonTab {...p} navigate={navigate} key={p.route} />)}
       </FooterTab>
