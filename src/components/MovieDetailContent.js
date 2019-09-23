@@ -54,7 +54,7 @@ export default class MovieDetailContent extends Component {
             <Text style={{ fontWeight: 'bold' }}>Synopsis</Text>
             <Text style={{ color: 'gray', marginTop: 10 }}>{movie.overview}</Text>
           </View>
-          <MovieDetailRating />
+          <MovieDetailRating movie={movie} />
         </View>
 
       </View>

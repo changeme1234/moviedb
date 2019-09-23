@@ -19,6 +19,10 @@ export class WatchListContent extends Component {
     this.setState({ ...this.state, loading: false, movies })
   }
 
+  async componentWillUnmount () {
+    this.setState({ loading: true })
+  }
+
   render () {
     const { loading, movies } = this.state
     const { navigation } = this.props

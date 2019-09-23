@@ -97,6 +97,38 @@ export default class MovieDB {
       throw (getErrorMessage(err.response.data))
     }
   }
+
+  static async getRatedMovies (sessionId) {
+    try {
+      const { data: { results } } = await client.get(`/account/${8681367}/rated/movies?api_key=${MOVIEDB_API_KEY}&language=en-US&session_id=${sessionId}&sort_by=created_at.desc&page=1`)
+      return results
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
+
+  static async addRating (sessionId, movieId, value) {
+    try {
+      const { data } = await client.post(
+        `/movie/${movieId}/rating?api_key=${MOVIEDB_API_KEY}&session_id=${sessionId}`,
+        {
+          value,
+        }
+      )
+      return data.status_message
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
+
+  static async deleteRating (sessionId, movieId) {
+    try {
+      const { data } = await client.delete(`/movie/${movieId}/rating?api_key=${MOVIEDB_API_KEY}&session_id=${sessionId}`)
+      return data
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
 }
 
 const getErrorMessage = (obj) => {
