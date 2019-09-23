@@ -48,7 +48,7 @@ export default class MovieDB {
 
   static async getWatchlist (sessionId, language = 'en-US') {
     try {
-      const { data: { results } } = await client.get(`/account/{account_id}/watchlist/movies?api_key=${MOVIEDB_API_KEY}&language=${language}&session_id=${sessionId}&sort_by=created_at.asc&page=1`)
+      const { data: { results } } = await axios.get(`https://api.themoviedb.org/3/account/{account_id}/watchlist/movies?api_key=${MOVIEDB_API_KEY}&language=${language}&session_id=${sessionId}&sort_by=created_at.asc&page=1`)
       return results
     } catch (err) {
       throw (getErrorMessage(err.response.data))
@@ -81,12 +81,28 @@ export default class MovieDB {
       throw (getErrorMessage(err.response.data))
     }
   }
+
+  static async addWatchlist (sessionId, movieId, list) {
+    try {
+      const { data } = await client.post(
+        `/account/{account_id}/watchlist?api_key=${MOVIEDB_API_KEY}&session_id=${sessionId}`,
+        {
+          media_type: 'movie',
+          media_id: movieId,
+          watchlist: list,
+        }
+      )
+      return data.status_message
+    } catch (err) {
+      throw (getErrorMessage(err.response.data))
+    }
+  }
 }
 
 const getErrorMessage = (obj) => {
   switch (obj.status_code) {
   case 7: return 'Invalid API setup'
   case 26: return obj.status_message
-  default: return 'Something went wrong'
+  default: return 'API Unhandled error'
   }
 }
